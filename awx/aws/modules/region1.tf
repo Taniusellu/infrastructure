@@ -8,7 +8,7 @@ resource "aws_instance" "worker1" {
   
 
   provisioner "file" {
-    source      = "/root/.ssh"
+    source      = "~/.ssh"
     destination = "/tmp/"
 
     connection {
@@ -67,3 +67,6 @@ resource "aws_instance" "worker1" {
 }
 ## Uses the same sec group as the tower
 ## Uses the same key as master
+
+
+

@@ -23,7 +23,7 @@ resource "aws_instance" "worker3" {
   key_name                    = "${var.key_name}"
   security_groups             = ["allow_ssh_and_awx"]
   provisioner "file" {
-    source      = "/root/.ssh"
+    source      = "~/.ssh"
     destination = "/tmp/"
 
     connection {
@@ -116,3 +116,6 @@ resource "aws_key_pair" "region3" {
   key_name   = "ansible"
   public_key = "${file("~/.ssh/id_rsa.pub")}"
 }
+
+
+
