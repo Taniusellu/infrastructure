@@ -20,7 +20,7 @@ resource "aws_instance" "worker1" {
   key_name                    = "${var.key_name}"
   ami                         = "${data.aws_ami.centos-region1.id}"
   associate_public_ip_address = "true"
-  security_groups             = ["allow_ssh_and_awx"]
+  security_groups             = ["${aws_security_group.allow_ssh_and_awx_region1.name}"]
   
 
   provisioner "file" {

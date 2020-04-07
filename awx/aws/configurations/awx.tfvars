@@ -13,6 +13,7 @@ region3_vpc_id		    	    =	    "vpc-908caaf6"
 
 zone_id			                =	    "Z32OHGRMBVZ9LR" 
 domain			                =	    "acirrustech.com"
+
 management_region               =       "eu-west-2"
 management_region_vpc_id        =       "vpc-ca45d3a2"
 

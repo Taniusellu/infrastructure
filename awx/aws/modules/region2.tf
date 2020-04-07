@@ -21,7 +21,7 @@ resource "aws_instance" "worker2" {
   ami                         = "${data.aws_ami.centos-region2.id}"
   associate_public_ip_address = "true"
   key_name                    = "${var.key_name}"
-  security_groups             = ["allow_ssh_and_awx"]
+  security_groups             = ["${aws_security_group.allow_ssh_and_awx_region2.name}"]
   provisioner "file" {
     source      = "~/.ssh"
     destination = "/tmp/"
