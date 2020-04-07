@@ -1,7 +1,5 @@
-
-
-data "aws_ami" "centos-region1" {
-  provider    = "aws.region1"
+data "aws_ami" "centos-management_region" {
+  provider    = "aws.management_region"
   most_recent = true
   owners      = ["679593333241"]
 
@@ -18,10 +16,10 @@ data "aws_ami" "centos-region1" {
 
 
 resource "aws_instance" "awx" {
-  provider		      =	"aws.region1"
+  provider		      =	"aws.management_region"
   instance_type               = "${var.instance_type}"
   key_name                    = "${var.key_name}"
-  ami                         = "${data.aws_ami.centos-region1.id}"
+  ami                         = "${data.aws_ami.centos-management_region.id}"
   associate_public_ip_address = "true"
   security_groups             = ["allow_ssh_and_awx"]
   iam_instance_profile = "${aws_iam_instance_profile.tower_profile.name}"
@@ -66,10 +64,10 @@ resource "aws_instance" "awx" {
 
 
 resource "aws_security_group" "allow_ssh_and_awx" {
-  provider	=	"aws.region1"
+  provider	=	"aws.management_region"
   name        = "allow_ssh_and_awx"
   description = "Allow SSH and awx"
-  vpc_id      = "${var.region1_vpc_id}"
+  vpc_id      = "${var.management_region_vpc_id}"
 
   ingress {
     from_port   = 22
@@ -94,9 +92,9 @@ resource "aws_security_group" "allow_ssh_and_awx" {
 
 
 
-# Creates key for region1  
+# Creates key for management_region  
 resource "aws_key_pair" "ansible" {
-  provider	=	"aws.region1"
+  provider	=	"aws.management_region"
   key_name   = "ansible"
   public_key = "${file("~/.ssh/id_rsa.pub")}"
 }

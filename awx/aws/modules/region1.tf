@@ -1,3 +1,19 @@
+data "aws_ami" "centos-region1" {
+  provider    = "aws.region1"
+  most_recent = true
+  owners      = ["679593333241"]
+
+  filter {
+    name   = "state"
+    values = ["available"]
+  }
+
+  filter {
+    name   = "name"
+    values = ["CentOS Linux 7 x86_64 HVM EBS *"]
+  }
+}
+
 resource "aws_instance" "worker1" {
   provider		      = "aws.region1"   
   instance_type               = "${var.instance_type}"
@@ -65,8 +81,42 @@ resource "aws_instance" "worker1" {
     ]
   }
 }
-## Uses the same sec group as the tower
-## Uses the same key as master
+
+resource "aws_security_group" "allow_ssh_and_awx_region1" {
+  provider	=	"aws.region1"
+  name        = "allow_ssh_and_awx"
+  description = "Allow SSH and awx"
+  vpc_id      = "${var.region1_vpc_id}"
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 65535
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+
+
+# Creates key for region1  
+resource "aws_key_pair" "ansible_region1" {
+  provider	=	"aws.region1"
+  key_name   = "ansible"
+  public_key = "${file("~/.ssh/id_rsa.pub")}"
+}
 
 
 

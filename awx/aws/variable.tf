@@ -10,3 +10,5 @@ variable "region3" {}
 variable "region1_vpc_id" {}
 variable "region2_vpc_id" {}
 variable "region3_vpc_id" {}
+variable "management_region" {}
+variable "management_region_vpc_id" {}
