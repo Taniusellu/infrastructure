@@ -1,5 +1,5 @@
 output "domain" {
-  value = " http://${aws_route53_record.tower.name}"
+  value = "http://${aws_route53_record.tower.name}"
 }
 output "username"{
   value = "password: password"
