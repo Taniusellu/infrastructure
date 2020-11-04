@@ -1,21 +1,21 @@
 # Below code is used to set backend only
-s3_bucket                       =	    "acirrustech-iaac"
+s3_bucket                       =	    "ansible-tower-taniusha"
 s3_folder_region                =	    "us-east-1"
 
 # Change to any region to work, in my case default region is us-east-1
-region1_vpc_id		    	    =	    "vpc-1471ad6e"
+region1_vpc_id		    	    =	    "vpc-0a03cd78b513f8932"
 
 # Change to second region to work, in my case oregon
-region2_vpc_id		    	    =	    "vpc-67dd1f1f"
+region2_vpc_id		    	    =	    "vpc-0e23b9d5ec9623c7e"
 
 # Change to second region to work, in my case ireland
-region3_vpc_id		    	    =	    "vpc-908caaf6"
+region3_vpc_id		    	    =	    "vpc-0a4097cbd49b717dc"
 
-zone_id			                =	    "Z32OHGRMBVZ9LR" 
-domain			                =	    "acirrustech.com"
+zone_id			                =	    "Z05411523PJ66X4F07A4W" 
+domain			                =	    "tatianamoraru.com"
 
 management_region               =       "eu-west-2"
-management_region_vpc_id        =       "vpc-ca45d3a2"
+management_region_vpc_id        =       "vpc-0d1c65f797c0d7a8f"
 
 
 

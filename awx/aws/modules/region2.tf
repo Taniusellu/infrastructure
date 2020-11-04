@@ -98,7 +98,7 @@ resource "aws_security_group" "allow_ssh_and_awx_region2" {
   ingress {
     from_port   = 80
     to_port     = 80
-    protocol    = "tcp"
+    protocol    = "tcp" 
     cidr_blocks = ["0.0.0.0/0"]
   }
 
